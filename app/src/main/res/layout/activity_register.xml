@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".ui.activity.RegisterActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign up now"
+        android:textStyle="bold"
+        android:textSize="26sp"
+        android:layout_gravity="center"
+        android:textColor="@color/text_primary"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please fill the details and sign up now!"
+        android:layout_gravity="center"
+        android:textSize="16sp"
+        android:textColor="@color/text_secondary"/>
+    <EditText
+        android:id="@+id/signup_name"
+        android:layout_width="319dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="Travelling Joe"
+        android:layout_marginTop="40dp"
+        />
+
+    <EditText
+        android:id="@+id/signup_email"
+        android:layout_width="319dp"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:layout_gravity="center"
+        android:hint="youremailaddress@example.com"
+        android:padding="5dp"
+        android:layout_marginVertical="20dp"
+        />
+
+    <EditText
+        android:id="@+id/signup_password"
+        android:layout_width="319dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        android:hint="********"/>
+
+    <RadioGroup
+        android:id="@+id/signup_radio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="20dp"
+        >
+        <RadioButton
+            android:id="@+id/register_traveller"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Traveller"
+            android:tag="Traveller"
+            android:layout_marginHorizontal="50dp"
+
+            />
+        <RadioButton
+            android:id="@+id/register_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guide"
+            android:tag="Guide"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/signup_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/primary"
+        android:hint="Sign Up"
+        android:textColorHint="@color/white"
+        android:width="335dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginVertical="40dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already have an account?"
+            android:textColor="@color/text_secondary"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/signin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign In"
+            android:textColor="@color/primary"
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+</LinearLayout>
