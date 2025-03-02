@@ -7,11 +7,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.travelapp.MainActivity
 import com.example.travelapp.R
 import com.example.travelapp.databinding.ActivityLoginBinding
 import com.example.travelapp.repository.UserRepositoryImpl
 import com.example.travelapp.utils.LoadingUtils
 import com.example.travelapp.viewmodel.UserViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
@@ -23,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var repo = UserRepositoryImpl()
+        var repo = UserRepositoryImpl(FirebaseAuth.getInstance())
         userViewModel = UserViewModel(repo)
 
         loadingUtils = LoadingUtils(this)
@@ -37,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
                 if(success){
                     Toast.makeText(this@LoginActivity,message, Toast.LENGTH_LONG).show()
                     loadingUtils.dismiss()
-//                    var intent = Intent(this@LoginActivity,NavigationActivity::class.java)
+                    var intent = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(intent)
                     finish()
                 }else{

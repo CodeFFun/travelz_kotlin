@@ -13,9 +13,9 @@ import com.example.travelapp.R
 import com.example.travelapp.databinding.ActivityRegisterBinding
 import com.example.travelapp.model.UserModel
 import com.example.travelapp.repository.UserRepositoryImpl
-import com.example.travelapp.ui.activity.LoginActivity
 import com.example.travelapp.utils.LoadingUtils
 import com.example.travelapp.viewmodel.UserViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 class RegisterActivity : AppCompatActivity() {
     lateinit var binding: ActivityRegisterBinding
@@ -31,11 +31,24 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val userRepository = UserRepositoryImpl()
+        val userRepository = UserRepositoryImpl(FirebaseAuth.getInstance())
 
         userViewModel = UserViewModel(userRepository)
 
+
+
         loadingUtils = LoadingUtils(this)
+
+        val radioGroup = findViewById<RadioGroup>(R.id.signup_radio)
+        var selectedText: String =""
+
+        radioGroup.setOnCheckedChangeListener { group, checkedId ->
+            if (checkedId != -1) {
+                val selectedRadioButton = findViewById<RadioButton>(checkedId)
+                selectedText = selectedRadioButton.text.toString()
+                Toast.makeText(this, "Selected: $selectedText", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         binding.signupButton.setOnClickListener{
             loadingUtils.show()
@@ -44,11 +57,16 @@ class RegisterActivity : AppCompatActivity() {
             var email: String = binding.signupEmail.text.toString()
             var password: String = binding.signupPassword.text.toString()
             val radioGroup = findViewById<RadioGroup>(R.id.signup_radio)
-            var userType: String = ""
-            radioGroup.setOnCheckedChangeListener { group, checkedId ->
-                val selectedRadioButton = findViewById<RadioButton>(checkedId)
-                userType = selectedRadioButton?.tag.toString()  // Get the assigned value
+            val selectedRadioButton = radioGroup.checkedRadioButtonId
+            val userType: String = if (selectedRadioButton != -1) {
+                findViewById<RadioButton>(selectedRadioButton).tag?.toString() ?: "No tage Found"
+            } else {
+                ""
             }
+
+//            if (!userType.isNullOrEmpty()) {
+//                Toast.makeText(this@RegisterActivity, userType, Toast.LENGTH_SHORT).show()
+//            }
             userViewModel.signup(email,password){
                     success,message,userId ->
                 if(success){
@@ -66,6 +84,7 @@ class RegisterActivity : AppCompatActivity() {
 
 
             }
+
         }
 
         binding.signin.setOnClickListener({

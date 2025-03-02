@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Home"
+        android:id="@+id/homeNav"
+        android:icon="@drawable/baseline_home_24"
+        />
+    <item android:title="Booking"
+        android:id="@+id/bookingNav"
+        android:icon="@drawable/baseline_add_card_24"/>
+    <item android:title="Diary"
+        android:id="@+id/diaryNav"
+        android:icon="@drawable/baseline_menu_book_24"/>
+    <item android:title="Profile"
+        android:id="@+id/profileNav"
+        android:icon="@drawable/baseline_person_24"/>
+</menu>

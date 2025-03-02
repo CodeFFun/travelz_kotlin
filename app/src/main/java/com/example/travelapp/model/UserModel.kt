@@ -8,11 +8,11 @@ data class UserModel(
     var userId : String = "",
     var email : String = "",
     var fullName : String = "",
+    var userType: String = "",
     var address : String = "",
     var phoneNumber : String = "",
     var imageName : String = "",
     var imageUrl : String = "",
-    var userType: String = "",
 
 ) : Parcelable{
     constructor(parcel: Parcel) : this(
@@ -30,9 +30,10 @@ data class UserModel(
         parcel.writeString(userId)
         parcel.writeString(email)
         parcel.writeString(fullName)
+        parcel.writeString(userType)
         parcel.writeString(address)
         parcel.writeString(phoneNumber)
-        parcel.writeString(userType)
+
     }
 
     override fun describeContents(): Int {
