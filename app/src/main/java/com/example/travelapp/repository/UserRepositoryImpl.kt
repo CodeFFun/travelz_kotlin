@@ -93,6 +93,30 @@ class UserRepositoryImpl(var auth: FirebaseAuth) : UserRepository {
         })
     }
 
+    override fun getGuidesFromDatabase(callback: (List<UserModel>, Boolean, String) -> Unit) {
+        val database = FirebaseDatabase.getInstance().reference.child("users")
+
+        database.orderByChild("userType").equalTo("Guide").addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val guideList = mutableListOf<UserModel>()
+                for(child in snapshot.children){
+                    val user = child.getValue(UserModel ::class.java)
+                    user?.let { guideList.add(it)}
+                }
+
+                if(guideList.isNotEmpty()){
+                    callback(guideList, true, "Guides Fetched Sucessfully")
+                } else {
+                    callback(emptyList(), false, "No guides found")
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                callback(emptyList(), false,error.message)
+            }
+        })
+    }
+
     override fun logout(callback: (Boolean, String) -> Unit) {
         try {
             auth.signOut()

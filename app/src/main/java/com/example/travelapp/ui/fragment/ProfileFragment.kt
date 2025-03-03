@@ -55,7 +55,7 @@ class ProfileFragment : Fragment() {
         }
 
         val role = listOf<String>("Traveler", "Guide")
-        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.list_item, role)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.spinner_list, role)
         val spinner = binding.spinner
         spinner.adapter = arrayAdapter
 

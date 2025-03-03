@@ -24,6 +24,7 @@ interface UserRepository {
     fun getUserFromDatabase(userId:String,
                             callback: (UserModel?, Boolean, String)
                             -> Unit)
+    fun getGuidesFromDatabase(callback: (List<UserModel>, Boolean, String) -> Unit)
 
     fun logout(callback: (Boolean, String) -> Unit)
 

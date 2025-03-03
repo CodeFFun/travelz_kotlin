@@ -1,5 +1,6 @@
 package com.example.travelapp.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 import com.example.travelapp.model.UserModel
@@ -33,6 +34,8 @@ class UserViewModel(val repo: UserRepository) {
         get() = _userData
 
 
+
+
     fun getUserFromDatabase(userId:String){
         repo.getUserFromDatabase(userId){
                 userModel,sucess,message->
@@ -40,6 +43,20 @@ class UserViewModel(val repo: UserRepository) {
                 _userData.value = userModel
             }else{
                 _userData.value = null
+            }
+        }
+    }
+
+    var _guideData = MutableLiveData<List<UserModel>>()
+    val guideData : LiveData<List<UserModel>> get() = _guideData
+
+    fun getGuidesFromDatabase(){
+        repo.getGuidesFromDatabase {
+            guides, sucess, message ->
+            if(sucess){
+                _guideData.value = guides
+            }else{
+                _guideData.value = emptyList()
             }
         }
     }
