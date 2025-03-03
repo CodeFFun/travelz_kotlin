@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="10dp"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.UpdateDestination">
+
+    <ImageView
+        android:id="@+id/destinationUpdateImg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/profile_picture" />
+    <Button
+        android:id="@+id/updateImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Image"
+        android:gravity="center"
+        android:layout_gravity="center"
+        />
+    <EditText
+        android:id="@+id/updateDestinationTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Bali"
+        android:layout_margin="10dp"/>
+    <EditText
+        android:id="@+id/updateDestinationDesc"
+        android:layout_width="match_parent"
+        android:text="Welcome to Bali"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/updtaeDestinationDate"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:text="2025/12/21"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/updateDestinationLocation"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:text="Malaysia"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/updateDestinationButton"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:background="@color/primary"
+        android:textColor="@color/white"
+        android:text="Update Destination" />
+    <Button
+        android:id="@+id/cancelUpdateDestination"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:background="@color/red"
+        android:textColor="@color/white"
+        android:text="Cancel" />
+
+</LinearLayout>
