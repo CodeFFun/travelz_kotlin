@@ -84,5 +84,13 @@
             android:text="Update Profile"
             android:layout_marginVertical="20dp"
             />
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:text="Logout "
+            android:layout_marginVertical="20dp"
+            />
     </LinearLayout>
 </FrameLayout>

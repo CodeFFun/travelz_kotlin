@@ -11,8 +11,7 @@ import com.example.travelapp.model.BookingModel
 class BookingAdapter(private val bookingList: MutableList<BookingModel>) : RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() {
 
     class BookingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val userName: TextView = itemView.findViewById(R.id.userName)
-        val userEmail: TextView = itemView.findViewById(R.id.userEmail)
+
         val bookingDate: TextView = itemView.findViewById(R.id.bookingDate)
         val guideName: TextView = itemView.findViewById(R.id.guideName)
         val guideEmail: TextView = itemView.findViewById(R.id.guideEmail)
@@ -28,8 +27,6 @@ class BookingAdapter(private val bookingList: MutableList<BookingModel>) : Recyc
 
     override fun onBindViewHolder(holder: BookingAdapter.BookingViewHolder, position: Int) {
         val booking = bookingList[position]
-        holder.userName.text = booking.userName
-        holder.userEmail.text = booking.userEmail
         holder.bookingDate.text = booking.bookingDate
         holder.guideName.text = booking.guideName
         holder.guideEmail.text = booking.guideEmail

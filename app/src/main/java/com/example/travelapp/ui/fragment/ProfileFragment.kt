@@ -14,6 +14,7 @@ import com.example.travelapp.R
 import com.example.travelapp.databinding.FragmentProfileBinding
 import com.example.travelapp.repository.UserRepositoryImpl
 import com.example.travelapp.ui.activity.LoginActivity
+import com.example.travelapp.ui.activity.RegisterActivity
 import com.example.travelapp.utils.LoadingUtils
 import com.example.travelapp.viewmodel.UserViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -74,6 +75,20 @@ class ProfileFragment : Fragment() {
         }
 
         loadingUtils = LoadingUtils(requireActivity())
+
+        binding.logout.setOnClickListener({
+            userViewModel.logout{ success,message ->
+                if(success){
+                    Toast.makeText(requireContext()
+                        ,message,Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(requireContext()
+                        ,message,Toast.LENGTH_SHORT).show()
+                }}
+            val intent = Intent(requireContext(),
+                LoginActivity::class.java)
+            startActivity(intent)
+        })
 
         binding.profileUpdate.setOnClickListener({
             loadingUtils.show()
